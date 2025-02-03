@@ -10,9 +10,16 @@ sequenceDiagram
     server-->>browser: HTTP status code 302
     deactivate server
 
-    browser->>server: GET /notes
+    Note right of browser: The browser sends the server a POST request with the new note and the page is reloaded
+
+    browser->>server: GET https://fullstack-example.herokuapp.com/notes
     activate server
-    server-->>browser: the css file
+    server-->>browser: HTML document
+    deactivate server
+
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+    activate server
+    server-->browser: the css file
     deactivate server
 
     browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
