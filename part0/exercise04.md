@@ -1,4 +1,4 @@
-Here is an example sequence diagram:
+Exercise 04: Sequence diagram for new note request
 
 ```mermaid
 sequenceDiagram
