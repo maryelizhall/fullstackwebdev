@@ -6,34 +6,10 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: POST https://fullstack-exampleapp.herokuapp.com/new_note
+    browser->>server: POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
     activate server
-    server-->>browser: HTTP status code 302
+    server-->>browser [{ "content": "Exercise 06 is easy", "date": "2025-2-4" }, ... ]
     deactivate server
 
-    Note right of browser: The browser sends the server a POST request with the new note and the page is reloaded
-
-    browser->>server: GET https://fullstack-example.herokuapp.com/notes
-    activate server
-    server-->>browser: HTML document
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
-    activate server
-    server-->browser: the css file
-    deactivate server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
-    activate server
-    server-->>browser: the Javascript file
-    deactivate server
-
-    Note right of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
-    activate server
-    server-->>browser [{ "content": "Exercise 04 is easy", "date": "2025-2-3" }, ... ]
-    deactivate server
-
-    Note right of browser: The browser executes the callback function that renders the notes
+    Note right of browser: The event handler creates a new note, adds it to the notes list, rerenders the notes list on the page, and sends the new note to the server.
 ```
